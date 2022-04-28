@@ -22,6 +22,5 @@ PrefixRenamer class >> unrename [
 	((RPackageOrganizer default packageNamed: 'Lambcalc') classTags 
 		 flatCollect: [ :tag | tag classes ]) do: [ :class | 
 		(class name beginsWith: 'DM') ifTrue: [ 
-			class rename: (class name allButFirst: 2).
-			 ] ]
+			class rename: (class name allButFirst: 2) ] ]
 ]
