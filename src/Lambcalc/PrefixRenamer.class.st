@@ -4,7 +4,7 @@ I rename all classes in my package to have a prefix of ""DM"".
 Class {
 	#name : #PrefixRenamer,
 	#superclass : #Object,
-	#category : #Lambcalc
+	#category : #'Lambcalc-Prefix'
 }
 
 { #category : #'menu - change set' }
