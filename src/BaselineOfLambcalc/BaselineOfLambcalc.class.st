@@ -7,6 +7,7 @@ Class {
 { #category : #baselines }
 BaselineOfLambcalc >> baseline: spec [
 
+	<baseline>
 	spec for: #common do: [ 
 		self petitParser: spec.
 		spec package: 'Lambcalc' with: [ spec requires: #( 'PetitParser' ) ] ]
