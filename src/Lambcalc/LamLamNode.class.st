@@ -8,6 +8,19 @@ Class {
 	#category : #'Lambcalc-Lambda'
 }
 
+{ #category : #'alpha renaming' }
+LamLamNode >> alphaRenameWith: aDictionary [
+
+	| newVar oldVar savedVar |
+	oldVar := var var.
+	newVar := oldVar , Temp fresh printString.
+	savedVar := aDictionary at: oldVar ifAbsent: [ nil ].
+	aDictionary at: oldVar put: newVar.
+	var var: newVar.
+	body alphaRenameWith: aDictionary.
+	aDictionary at: oldVar put: savedVar
+]
+
 { #category : #accessing }
 LamLamNode >> body [
 

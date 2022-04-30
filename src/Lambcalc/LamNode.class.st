@@ -4,6 +4,22 @@ Class {
 	#category : #'Lambcalc-Lambda'
 }
 
+{ #category : #'alpha renaming' }
+LamNode >> alphaRename [
+
+	self alphaRenameWith: Dictionary new
+]
+
+{ #category : #'alpha renaming' }
+LamNode >> alphaRenameWith: aDictionary [
+
+	| child |
+	self class slots do: [ :slot | 
+		child := slot read: self.
+		(child isKindOf: LamNode) ifTrue: [ 
+			child alphaRenameWith: aDictionary ] ]
+]
+
 { #category : #printing }
 LamNode >> printOn: aStream [
 

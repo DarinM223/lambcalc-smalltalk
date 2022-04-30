@@ -7,6 +7,14 @@ Class {
 	#category : #'Lambcalc-Lambda'
 }
 
+{ #category : #'alpha renaming' }
+VarLamNode >> alphaRenameWith: aDictionary [
+
+	(aDictionary includesKey: var)
+		ifTrue: [ self var: (aDictionary at: var) ]
+		ifFalse: [ self error: var , ' not in scope' ]
+]
+
 { #category : #accessing }
 VarLamNode >> var [
 
