@@ -8,19 +8,23 @@ Class {
 }
 
 { #category : #'menu - change set' }
-PrefixRenamer class >> rename [
+PrefixRenamer class >> addPrefix: aPrefix [
 
 	((RPackageOrganizer default packageNamed: 'Lambcalc') classTags 
 		 flatCollect: [ :tag | tag classes ]) do: [ :class | 
-		(class name beginsWith: 'DM') ifFalse: [ 
-			class rename: 'DM' , class name ] ]
+		(class name beginsWith: aPrefix) ifFalse: [ 
+			(RBRenameClassRefactoring
+				 rename: class name
+				 to: aPrefix , class name) execute ] ]
 ]
 
 { #category : #'menu - change set' }
-PrefixRenamer class >> unrename [
+PrefixRenamer class >> removePrefix: aPrefix [
 
 	((RPackageOrganizer default packageNamed: 'Lambcalc') classTags 
 		 flatCollect: [ :tag | tag classes ]) do: [ :class | 
-		(class name beginsWith: 'DM') ifTrue: [ 
-			class rename: (class name allButFirst: 2) ] ]
+		(class name beginsWith: aPrefix) ifTrue: [ 
+			(RBRenameClassRefactoring
+				 rename: class name
+				 to: (class name allButFirst: aPrefix size)) execute ] ]
 ]
