@@ -15,6 +15,12 @@ VarLamNode >> alphaRenameWith: aDictionary [
 		ifFalse: [ self error: var , ' not in scope' ]
 ]
 
+{ #category : #'anf conversion' }
+VarLamNode >> anfConvertWith: aFullBlockClosure [
+
+	^ aFullBlockClosure value: (VarAnfValue var: self var)
+]
+
 { #category : #accessing }
 VarLamNode >> var [
 

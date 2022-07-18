@@ -1,6 +1,6 @@
 Class {
 	#name : #GlobAnfValue,
-	#superclass : #Object,
+	#superclass : #AnfValue,
 	#instVars : [
 		'var'
 	],

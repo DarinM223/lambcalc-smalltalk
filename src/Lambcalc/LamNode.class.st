@@ -20,6 +20,12 @@ LamNode >> alphaRenameWith: aDictionary [
 			child alphaRenameWith: aDictionary ] ]
 ]
 
+{ #category : #'anf conversion' }
+LamNode >> anfConvert [
+
+	^ self anfConvertWith: [ :value | HaltAnfExp val: value ]
+]
+
 { #category : #printing }
 LamNode >> printOn: aStream [
 

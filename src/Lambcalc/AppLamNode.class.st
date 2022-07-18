@@ -8,6 +8,14 @@ Class {
 	#category : #'Lambcalc-Lambda'
 }
 
+{ #category : #'anf conversion' }
+AppLamNode >> anfConvertWith: aFullBlockClosure [
+
+	^ self lam anfConvertWith: [ :f | 
+		  self val anfConvertWith: [ :x | 
+			  f applyVal: x andCont: aFullBlockClosure ] ]
+]
+
 { #category : #accessing }
 AppLamNode >> lam [
 

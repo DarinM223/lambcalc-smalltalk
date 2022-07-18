@@ -7,6 +7,12 @@ Class {
 	#category : #'Lambcalc-Lambda'
 }
 
+{ #category : #'anf conversion' }
+IntLamNode >> anfConvertWith: aFullBlockClosure [
+
+	^ aFullBlockClosure value: (IntAnfValue val: val)
+]
+
 { #category : #accessing }
 IntLamNode >> val [
 

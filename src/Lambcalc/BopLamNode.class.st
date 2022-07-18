@@ -9,6 +9,21 @@ Class {
 	#category : #'Lambcalc-Lambda'
 }
 
+{ #category : #'anf conversion' }
+BopLamNode >> anfConvertWith: aFullBlockClosure [
+
+	| r |
+	^ self left anfConvertWith: [ :leftVal | 
+		self right anfConvertWith: [ :rightVal | 
+			r := 'r' , Temp fresh printString.
+			BopAnfExp
+				binding: r
+				op: self op
+				left: leftVal
+				right: rightVal
+				rest: (aFullBlockClosure value: (VarAnfValue var: r)) ] ]
+]
+
 { #category : #accessing }
 BopLamNode >> left [
 

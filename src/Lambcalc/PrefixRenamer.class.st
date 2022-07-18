@@ -1,5 +1,5 @@
 "
-I rename all classes in my package to have a prefix of ""DM"".
+I rename all classes in my package to have a given prefix, such as ""DM"".
 "
 Class {
 	#name : #PrefixRenamer,
