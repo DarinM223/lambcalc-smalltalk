@@ -4,6 +4,12 @@ Class {
 	#category : #'Lambcalc-Anf'
 }
 
+{ #category : #'free variables' }
+AnfExp >> freeVars [
+
+	^ self freeVarsWith: Set empty
+]
+
 { #category : #printing }
 AnfExp >> printOn: aStream [
 

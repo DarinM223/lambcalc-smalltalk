@@ -20,6 +20,19 @@ FunAnfExp class >> binding: aString params: aCollection body: anAnfExp rest: anA
 		  rest: anAnfExp2
 ]
 
+{ #category : #'free variables' }
+FunAnfExp >> freeVarsWith: aSet [
+
+	| bodyFreeVars restFreeVars |
+	aSet addAll: params.
+	bodyFreeVars := body freeVarsWith: aSet.
+	aSet removeAll: params.
+	aSet add: binding.
+	restFreeVars := rest freeVarsWith: aSet.
+	aSet remove: binding.
+	^ bodyFreeVars union: restFreeVars
+]
+
 { #category : #initialization }
 FunAnfExp >> initializeBinding: aString params: aCollection body: anAnfExp rest: anAnfExp2 [
 

@@ -14,6 +14,12 @@ JumpAnfExp class >> join: aString val: anAnfValue [
 	^ self new initializeJoin: aString val: anAnfValue
 ]
 
+{ #category : #'free variables' }
+JumpAnfExp >> freeVarsWith: aSet [
+
+	^ val ifNil: [ Set empty ] ifNotNil: [ val freeVarsWith: aSet ]
+]
+
 { #category : #initialization }
 JumpAnfExp >> initializeJoin: aString val: anAnfValue [
 

@@ -20,6 +20,20 @@ AppAnfExp class >> binding: aString funName: aVarAnfValue params: aCollection re
 		  rest: anAnfExp
 ]
 
+{ #category : #'free variables' }
+AppAnfExp >> freeVarsWith: aSet [
+
+	| freeVars restFreeVars |
+	freeVars := funName freeVarsWith: aSet.
+	params do: [ :param | 
+		freeVars := freeVars union: (param freeVarsWith: aSet) ].
+
+	aSet add: binding.
+	restFreeVars := rest freeVarsWith: aSet.
+	aSet remove: binding.
+	^ freeVars union: restFreeVars
+]
+
 { #category : #initialization }
 AppAnfExp >> initializeBinding: aString funName: aVarAnfValue params: aCollection rest: anAnfExp [
 

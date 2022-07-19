@@ -25,6 +25,14 @@ VarAnfValue >> applyVal: aVarAnfValue andCont: aFullBlockClosure [
 		  rest: (aFullBlockClosure value: (VarAnfValue var: r))
 ]
 
+{ #category : #'free variables' }
+VarAnfValue >> freeVarsWith: aSet [
+
+	^ (aSet includes: var)
+		  ifTrue: [ Set empty ]
+		  ifFalse: [ Set with: var ]
+]
+
 { #category : #accessing }
 VarAnfValue >> var: aString [
 

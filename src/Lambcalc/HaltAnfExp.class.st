@@ -13,6 +13,12 @@ HaltAnfExp class >> val: anAnfValue [
 	^ self new val: anAnfValue
 ]
 
+{ #category : #'free variables' }
+HaltAnfExp >> freeVarsWith: aSet [
+
+	^ val freeVarsWith: aSet
+]
+
 { #category : #accessing }
 HaltAnfExp >> val: anAnfValue [
 

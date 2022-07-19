@@ -18,9 +18,3 @@ AnfValue >> printOn: aStream [
 		(slot read: self) printOn: aStream ].
 	aStream nextPutAll: ')'
 ]
-
-{ #category : #asserting }
-AnfValue >> shouldBePrintedAsLiteral [
-
-	^ true
-]
