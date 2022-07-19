@@ -7,22 +7,21 @@ Class {
 { #category : #tests }
 AnfConvertTest >> testAnfConvert [
 
-	| parser node result expected |
+	| parser node expected |
 	Temp reset.
 	parser := Parser new.
 	node := parser parse:
 		        '(fn g => (fn x => g (fn v => x x v)) (fn x => g (fn v => x x v))) (fn f => fn x => if x then (if x - 1 then x * f (x - 1) else 1) else 1) 5'.
 	node alphaRename.
-	result := node anfConvert.
 	expected := FunAnfExp
 		            binding: 'f7'
-		            params: #( 'g0' )
+		            params: { 'g0' }
 		            body: (FunAnfExp
 				             binding: 'f8'
-				             params: #( 'x1' )
+				             params: { 'x1' }
 				             body: (FunAnfExp
 						              binding: 'f9'
-						              params: #( 'v2' )
+						              params: { 'v2' }
 						              body: (AppAnfExp
 								               binding: 'r10'
 								               funName: (VarAnfValue var: 'x1')
@@ -41,10 +40,10 @@ AnfConvertTest >> testAnfConvert [
 								               (HaltAnfExp val: (VarAnfValue var: 'r12'))))
 				             rest: (FunAnfExp
 						              binding: 'f13'
-						              params: #( 'x3' )
+						              params: { 'x3' }
 						              body: (FunAnfExp
 								               binding: 'f14'
-								               params: #( 'v4' )
+								               params: { 'v4' }
 								               body: (AppAnfExp
 										                binding: 'r15'
 										                funName: (VarAnfValue var: 'x3')
@@ -69,10 +68,10 @@ AnfConvertTest >> testAnfConvert [
 								               (HaltAnfExp val: (VarAnfValue var: 'r18')))))
 		            rest: (FunAnfExp
 				             binding: 'f19'
-				             params: #( 'f5' )
+				             params: { 'f5' }
 				             body: (FunAnfExp
 						              binding: 'f20'
-						              params: #( 'x6' )
+						              params: { 'x6' }
 						              body: (JoinAnfExp
 								               binding: 'j21'
 								               valueBinding: 'p22'
@@ -136,5 +135,5 @@ AnfConvertTest >> testAnfConvert [
 								               params: { (IntAnfValue val: 5) }
 								               rest:
 								               (HaltAnfExp val: (VarAnfValue var: 'r30'))))).
-	self assert: result printString equals: expected printString
+	self assert: node anfConvert printString equals: expected printString
 ]

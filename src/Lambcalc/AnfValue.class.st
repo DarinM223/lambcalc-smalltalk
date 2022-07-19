@@ -15,8 +15,7 @@ AnfValue >> printOn: aStream [
 			nextPutAll: ' ';
 			nextPutAll: slot name;
 			nextPutAll: ': '.
-		(slot read: self) printOn: aStream.
-		aStream nextPutAll: ' ' ].
+		(slot read: self) printOn: aStream ].
 	aStream nextPutAll: ')'
 ]
 
