@@ -20,7 +20,7 @@ VarAnfValue >> applyVal: aVarAnfValue andCont: aFullBlockClosure [
 	r := 'r' , Temp fresh printString.
 	^ AppAnfExp
 		  binding: r
-		  funName: self
+		  funName: var
 		  params: { aVarAnfValue }
 		  rest: (aFullBlockClosure value: (VarAnfValue var: r))
 ]

@@ -24,17 +24,17 @@ AnfConvertTest >> testAnfConvert [
 						              params: { 'v2' }
 						              body: (AppAnfExp
 								               binding: 'r10'
-								               funName: (VarAnfValue var: 'x1')
+								               funName: 'x1'
 								               params: { (VarAnfValue var: 'x1') }
 								               rest: (AppAnfExp
 										                binding: 'r11'
-										                funName: (VarAnfValue var: 'r10')
+										                funName: 'r10'
 										                params: { (VarAnfValue var: 'v2') }
 										                rest:
 										                (HaltAnfExp val: (VarAnfValue var: 'r11'))))
 						              rest: (AppAnfExp
 								               binding: 'r12'
-								               funName: (VarAnfValue var: 'g0')
+								               funName: 'g0'
 								               params: { (VarAnfValue var: 'f9') }
 								               rest:
 								               (HaltAnfExp val: (VarAnfValue var: 'r12'))))
@@ -46,23 +46,23 @@ AnfConvertTest >> testAnfConvert [
 								               params: { 'v4' }
 								               body: (AppAnfExp
 										                binding: 'r15'
-										                funName: (VarAnfValue var: 'x3')
+										                funName: 'x3'
 										                params: { (VarAnfValue var: 'x3') }
 										                rest: (AppAnfExp
 												                 binding: 'r16'
-												                 funName: (VarAnfValue var: 'r15')
+												                 funName: 'r15'
 												                 params: { (VarAnfValue var: 'v4') }
 												                 rest:
 												                 (HaltAnfExp val: (VarAnfValue var: 'r16'))))
 								               rest: (AppAnfExp
 										                binding: 'r17'
-										                funName: (VarAnfValue var: 'g0')
+										                funName: 'g0'
 										                params: { (VarAnfValue var: 'f14') }
 										                rest:
 										                (HaltAnfExp val: (VarAnfValue var: 'r17'))))
 						              rest: (AppAnfExp
 								               binding: 'r18'
-								               funName: (VarAnfValue var: 'f8')
+								               funName: 'f8'
 								               params: { (VarAnfValue var: 'f13') }
 								               rest:
 								               (HaltAnfExp val: (VarAnfValue var: 'r18')))))
@@ -100,8 +100,7 @@ AnfConvertTest >> testAnfConvert [
 																		                    right: (IntAnfValue val: 1)
 																		                    rest: (AppAnfExp
 																				                     binding: 'r27'
-																				                     funName:
-																				                     (VarAnfValue var: 'f5')
+																				                     funName: 'f5'
 																				                     params:
 																				                     { (VarAnfValue var: 'r26') }
 																				                     rest: (BopAnfExp
@@ -127,11 +126,11 @@ AnfConvertTest >> testAnfConvert [
 						              rest: (HaltAnfExp val: (VarAnfValue var: 'f20')))
 				             rest: (AppAnfExp
 						              binding: 'r29'
-						              funName: (VarAnfValue var: 'f7')
+						              funName: 'f7'
 						              params: { (VarAnfValue var: 'f19') }
 						              rest: (AppAnfExp
 								               binding: 'r30'
-								               funName: (VarAnfValue var: 'r29')
+								               funName: 'r29'
 								               params: { (IntAnfValue val: 5) }
 								               rest:
 								               (HaltAnfExp val: (VarAnfValue var: 'r30'))))).

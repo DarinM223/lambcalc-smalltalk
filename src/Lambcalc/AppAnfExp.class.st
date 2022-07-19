@@ -24,7 +24,7 @@ AppAnfExp class >> binding: aString funName: aVarAnfValue params: aCollection re
 AppAnfExp >> freeVarsWith: aSet [
 
 	| freeVars restFreeVars |
-	freeVars := funName freeVarsWith: aSet.
+	freeVars := (VarAnfValue var: funName) freeVarsWith: aSet.
 	params do: [ :param | 
 		freeVars := freeVars union: (param freeVarsWith: aSet) ].
 

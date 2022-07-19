@@ -24,7 +24,7 @@ FreeVarsTest >> testFreeVarsApp [
 	| exp |
 	exp := AppAnfExp
 		       binding: 'r'
-		       funName: (VarAnfValue var: 'f')
+		       funName: 'f'
 		       params: { 
 				       (VarAnfValue var: 'a').
 				       (VarAnfValue var: 'b') }
@@ -57,7 +57,7 @@ FreeVarsTest >> testFreeVarsFunction [
 								          rest: (HaltAnfExp val: (VarAnfValue var: 'r3')))))
 		       rest: (AppAnfExp
 				        binding: 'r4'
-				        funName: (VarAnfValue var: 'f')
+				        funName: 'f'
 				        params: { (VarAnfValue var: 'f') }
 				        rest: (HaltAnfExp val: (VarAnfValue var: 'r4'))).
 	self assert: exp freeVars equals: (Set withAll: { 'a'. 'b' })
