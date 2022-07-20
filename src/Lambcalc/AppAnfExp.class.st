@@ -20,6 +20,22 @@ AppAnfExp class >> binding: aString funName: aVarAnfValue params: aCollection re
 		  rest: anAnfExp
 ]
 
+{ #category : #'closure conversion' }
+AppAnfExp >> closureConvert [
+
+	| ptr |
+	ptr := funName , Temp fresh printString.
+	^ ProjAnfExp
+		  binding: ptr
+		  tupleName: funName
+		  index: 0
+		  rest: (AppAnfExp
+				   binding: binding
+				   funName: ptr
+				   params: (params copyWithFirst: (VarAnfValue var: funName))
+				   rest: rest closureConvert)
+]
+
 { #category : #'free variables' }
 AppAnfExp >> freeVarsWith: aSet [
 

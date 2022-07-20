@@ -20,6 +20,31 @@ FunAnfExp class >> binding: aString params: aCollection body: anAnfExp rest: anA
 		  rest: anAnfExp2
 ]
 
+{ #category : #'closure conversion' }
+FunAnfExp >> closureConvert [
+
+	| env freeVars exp |
+	env := 'env' , Temp fresh printString.
+	freeVars := (body freeVars difference: params) asArray.
+	exp := body closureConvert.
+	freeVars withIndexDo: [ :var :index | 
+		exp := ProjAnfExp
+			       binding: var
+			       tupleName: env
+			       index: index
+			       rest: exp ].
+	^ FunAnfExp
+		  binding: binding
+		  params: (params copyWithFirst: env)
+		  body: exp
+		  rest: (TupleAnfExp
+				   binding: binding
+				   values:
+					   ((freeVars collect: [ :var | VarAnfValue var: var ]) 
+						    copyWithFirst: (GlobAnfValue var: binding))
+				   rest: rest closureConvert)
+]
+
 { #category : #'free variables' }
 FunAnfExp >> freeVarsWith: aSet [
 
