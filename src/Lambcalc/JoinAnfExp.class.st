@@ -30,6 +30,19 @@ JoinAnfExp >> freeVarsWith: aSet [
 	^ bodyFreeVars union: (rest freeVarsWith: aSet)
 ]
 
+{ #category : #hoisting }
+JoinAnfExp >> hoistWithFunctions: functions andJoins: joins [
+
+	| hoistedBody hoistedRest |
+	hoistedBody := body hoistWithFunctions: functions andJoins: joins.
+	hoistedRest := rest hoistWithFunctions: functions andJoins: joins.
+	joins add: { 
+			binding.
+			valueBinding.
+			hoistedBody }.
+	^ hoistedRest
+]
+
 { #category : #initialization }
 JoinAnfExp >> initializeBinding: aString valueBinding: aString2 body: anAnfExp rest: anAnfExp2 [
 

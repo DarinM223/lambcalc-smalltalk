@@ -25,6 +25,35 @@ IfAnfExp >> freeVarsWith: aSet [
 		  union: (falseExp freeVarsWith: aSet)
 ]
 
+{ #category : #hoisting }
+IfAnfExp >> hoistWithFunctions: functions andJoins: joins [
+
+	| hoistedTrueExp hoistedFalseExp then else branchTrue branchFalse |
+	hoistedTrueExp := trueExp
+		                  hoistWithFunctions: functions
+		                  andJoins: joins.
+	hoistedFalseExp := falseExp
+		                   hoistWithFunctions: functions
+		                   andJoins: joins.
+	then := 'then' , Temp fresh printString.
+	else := 'else' , Temp fresh printString.
+	branchTrue := { 
+		              then.
+		              nil.
+		              hoistedTrueExp }.
+	branchFalse := { 
+		               else.
+		               nil.
+		               hoistedFalseExp }.
+	joins
+		add: branchTrue;
+		add: branchFalse.
+	^ IfAnfExp
+		  testValue: testValue
+		  trueExp: (JumpAnfExp join: then val: nil)
+		  falseExp: (JumpAnfExp join: else val: nil)
+]
+
 { #category : #initialization }
 IfAnfExp >> initializeTestValue: anAnfValue trueExp: anAnfExp falseExp: anAnfExp2 [
 

@@ -26,6 +26,38 @@ AnfExp >> freeVars [
 	^ self freeVarsWith: Set empty
 ]
 
+{ #category : #hoisting }
+AnfExp >> hoist [
+
+	| fns joins |
+	fns := OrderedCollection new.
+	joins := OrderedCollection new.
+	(FunAnfExp
+		 binding: 'main'
+		 params: {  }
+		 body: self
+		 rest: (HaltAnfExp val: (IntAnfValue val: 0)))
+		hoistWithFunctions: fns
+		andJoins: joins.
+	^ fns
+]
+
+{ #category : #hoisting }
+AnfExp >> hoistWithFunctions: functions andJoins: joins [
+
+	| child newExp |
+	newExp := self class new.
+	self class slots do: [ :slot | 
+		child := slot read: self.
+
+		slot
+			write: ((child isKindOf: AnfExp)
+					 ifTrue: [ child hoistWithFunctions: functions andJoins: joins ]
+					 ifFalse: [ child ])
+			to: newExp ].
+	^ newExp
+]
+
 { #category : #printing }
 AnfExp >> printOn: aStream [
 

@@ -58,6 +58,25 @@ FunAnfExp >> freeVarsWith: aSet [
 	^ bodyFreeVars union: restFreeVars
 ]
 
+{ #category : #hoisting }
+FunAnfExp >> hoistWithFunctions: functions andJoins: joins [
+
+	| bodyJoins hoistedBody hoistedRest entry |
+	bodyJoins := OrderedCollection new.
+	hoistedBody := body hoistWithFunctions: functions andJoins: bodyJoins.
+	hoistedRest := rest hoistWithFunctions: functions andJoins: joins.
+	entry := 'entry' , Temp fresh printString.
+	functions add: { 
+			binding.
+			params.
+			{ 
+				entry.
+				nil.
+				hoistedBody }.
+			bodyJoins }.
+	^ hoistedRest
+]
+
 { #category : #initialization }
 FunAnfExp >> initializeBinding: aString params: aCollection body: anAnfExp rest: anAnfExp2 [
 
