@@ -38,6 +38,22 @@ AnfPrintTest >> testPrintFunAnfExp [
 ]
 
 { #category : #tests }
+AnfPrintTest >> testPrintFunc [
+
+	| funcs expected |
+	funcs := Func
+		         binding: 'f'
+		         params: { 'x'. 'y' }
+		         entry: (Join
+				          binding: 'j'
+				          valueBinding: 'p'
+				          body: (HaltAnfExp val: (VarAnfValue var: 'p')))
+		         joins: OrderedCollection new.
+	expected := '(Func binding: ''f'' params: { ''x''. ''y''. } entry: (Join binding: ''j'' valueBinding: ''p'' body: (HaltAnfExp val: (VarAnfValue var: ''p''))) joins: (OrderedCollection withAll: { }))'.
+	self assert: funcs printString equals: expected
+]
+
+{ #category : #tests }
 AnfPrintTest >> testPrintSingleParamHasPeriod [
 
 	| exp |

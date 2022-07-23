@@ -36,10 +36,8 @@ JoinAnfExp >> hoistWithFunctions: functions andJoins: joins [
 	| hoistedBody hoistedRest |
 	hoistedBody := body hoistWithFunctions: functions andJoins: joins.
 	hoistedRest := rest hoistWithFunctions: functions andJoins: joins.
-	joins add: { 
-			binding.
-			valueBinding.
-			hoistedBody }.
+	joins add:
+		(Join binding: binding valueBinding: valueBinding body: body).
 	^ hoistedRest
 ]
 

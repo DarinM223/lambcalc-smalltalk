@@ -37,14 +37,14 @@ IfAnfExp >> hoistWithFunctions: functions andJoins: joins [
 		                   andJoins: joins.
 	then := 'then' , Temp fresh printString.
 	else := 'else' , Temp fresh printString.
-	branchTrue := { 
-		              then.
-		              nil.
-		              hoistedTrueExp }.
-	branchFalse := { 
-		               else.
-		               nil.
-		               hoistedFalseExp }.
+	branchTrue := Join
+		              binding: then
+		              valueBinding: nil
+		              body: hoistedTrueExp.
+	branchFalse := Join
+		               binding: else
+		               valueBinding: nil
+		               body: hoistedFalseExp.
 	joins
 		add: branchTrue;
 		add: branchFalse.
