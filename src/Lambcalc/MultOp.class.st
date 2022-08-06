@@ -1,5 +1,5 @@
 Class {
 	#name : #MultOp,
-	#superclass : #Object,
+	#superclass : #Op,
 	#category : #'Lambcalc-Op'
 }

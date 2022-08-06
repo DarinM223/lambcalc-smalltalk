@@ -33,6 +33,12 @@ VarAnfValue >> freeVarsWith: aSet [
 		  ifFalse: [ Set with: var ]
 ]
 
+{ #category : #'llvm lowering' }
+VarAnfValue >> lower [
+
+	^ IdOperand var: var
+]
+
 { #category : #accessing }
 VarAnfValue >> var: aString [
 

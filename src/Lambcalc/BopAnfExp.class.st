@@ -43,3 +43,16 @@ BopAnfExp >> initializeBinding: aString op: aClass left: anAnfValue right: anAnf
 	right := anAnfValue2.
 	rest := anAnfExp
 ]
+
+{ #category : #'llvm lowering' }
+BopAnfExp >> lowerWith: lower [
+
+	lower instrs add: { 
+			binding.
+			(BinopInsn
+				 op: op
+				 ty: I64Ty new
+				 left: left lower
+				 right: right lower) }.
+	rest lowerWith: lower
+]

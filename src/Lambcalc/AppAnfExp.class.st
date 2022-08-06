@@ -58,3 +58,29 @@ AppAnfExp >> initializeBinding: aString funName: aVarAnfValue params: aCollectio
 	params := aCollection.
 	rest := anAnfExp
 ]
+
+{ #category : #'llvm lowering' }
+AppAnfExp >> lowerWith: lower [
+
+	| loweredParams casted |
+	loweredParams := params collect: [ :param | 
+		                 { 
+			                 I64Ty new.
+			                 param lower } ].
+	casted := 'c' , Temp fresh printString.
+
+	lower instrs
+		add: { 
+				casted.
+				(IntToPtrInsn
+					 ty1: I64Ty new
+					 val: (IdOperand var: funName)
+					 ty2: (PtrTy ty: Lower fty)) };
+		add: { 
+				binding.
+				(CallInsn
+					 ty: I64Ty new
+					 fun: (IdOperand var: casted)
+					 args: loweredParams) }.
+	rest lowerWith: lower
+]

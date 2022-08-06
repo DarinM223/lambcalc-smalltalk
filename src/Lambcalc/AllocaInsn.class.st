@@ -6,3 +6,15 @@ Class {
 	],
 	#category : #'Lambcalc-Llvm'
 }
+
+{ #category : #accessing }
+AllocaInsn class >> ty: aTy [
+
+	^ self new ty: aTy
+]
+
+{ #category : #accessing }
+AllocaInsn >> ty: aTy [
+
+	ty := aTy
+]

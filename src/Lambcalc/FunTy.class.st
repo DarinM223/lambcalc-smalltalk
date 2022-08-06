@@ -6,3 +6,14 @@ Class {
 	],
 	#category : #'Lambcalc-Llvm'
 }
+
+{ #category : #accessing }
+FunTy class >> ty: aCollection [
+
+	^ self new ty: aCollection
+]
+
+{ #category : #accessing }
+FunTy >> ty: aCollection [ 
+	ty := aCollection
+]

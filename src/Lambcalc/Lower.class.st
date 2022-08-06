@@ -2,10 +2,41 @@ Class {
 	#name : #Lower,
 	#superclass : #Object,
 	#instVars : [
-		'last'
+		'last',
+		'spills',
+		'instrs'
 	],
 	#category : #'Lambcalc-Lower'
 }
+
+{ #category : #'as yet unclassified' }
+Lower class >> fty [
+
+	^ { 
+		  { 
+			  I64Ty new.
+			  I64Ty new }.
+		  I64Ty new }
+]
+
+{ #category : #'as yet unclassified' }
+Lower class >> spills: aCollection instrs: aCollection2 [
+
+	^ self new initializeSpills: aCollection instrs: aCollection2
+]
+
+{ #category : #initialization }
+Lower >> initializeSpills: aCollection instrs: aCollection2 [
+
+	spills := aCollection.
+	instrs := aCollection2
+]
+
+{ #category : #accessing }
+Lower >> instrs [
+
+	^ instrs
+]
 
 { #category : #accessing }
 Lower >> last [
@@ -19,8 +50,13 @@ Lower >> last: anObject [
 	last := anObject
 ]
 
-{ #category : #'llvm lowering' }
-Lower >> lowerFunc: fn [
+{ #category : #accessing }
+Lower >> spills [
+	^ spills
+]
 
-	^ self notYetImplemented
+{ #category : #'as yet unclassified' }
+Lower >> spills: aCollection [
+
+	spills := aCollection
 ]

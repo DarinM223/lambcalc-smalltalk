@@ -26,3 +26,21 @@ JumpAnfExp >> initializeJoin: aString val: anAnfValue [
 	join := aString.
 	val := anAnfValue
 ]
+
+{ #category : #accessing }
+JumpAnfExp >> join [
+	^ join
+]
+
+{ #category : #'llvm lowering' }
+JumpAnfExp >> lowerWith: lower [
+
+	lower spills at: join ifPresent: [ :slot | 
+		lower instrs add: { 
+				''.
+				(StoreInsn
+					 ty: I64Ty new
+					 src: val lower
+					 dest: (IdOperand var: slot)) } ].
+	lower last: (BrTerminator label: join)
+]

@@ -1,5 +1,5 @@
 Class {
-	#name : #PlusOp,
-	#superclass : #Op,
+	#name : #Op,
+	#superclass : #Object,
 	#category : #'Lambcalc-Op'
 }

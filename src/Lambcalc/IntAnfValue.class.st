@@ -19,6 +19,12 @@ IntAnfValue >> freeVarsWith: aSet [
 	^ Set empty
 ]
 
+{ #category : #'llvm lowering' }
+IntAnfValue >> lower [
+
+	^ ConstOperand val: val
+]
+
 { #category : #accessing }
 IntAnfValue >> val: anInteger [
 

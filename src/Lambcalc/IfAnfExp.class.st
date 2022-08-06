@@ -61,3 +61,21 @@ IfAnfExp >> initializeTestValue: anAnfValue trueExp: anAnfExp falseExp: anAnfExp
 	trueExp := anAnfExp.
 	falseExp := anAnfExp2
 ]
+
+{ #category : #'llvm lowering' }
+IfAnfExp >> lowerWith: lower [
+
+	| cmp |
+	cmp := 'c' , Temp fresh printString.
+	lower instrs add: { 
+			cmp.
+			(IcmpInsn
+				 cnd: 'sgt'
+				 ty: I64Ty new
+				 left: testValue lower
+				 right: (ConstOperand val: 0)) }.
+	lower last: (CbrTerminator
+			 val: (IdOperand var: cmp)
+			 then: trueExp join
+			 else: falseExp join)
+]

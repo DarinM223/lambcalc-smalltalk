@@ -19,6 +19,12 @@ HaltAnfExp >> freeVarsWith: aSet [
 	^ val freeVarsWith: aSet
 ]
 
+{ #category : #'llvm lowering' }
+HaltAnfExp >> lowerWith: lower [
+
+	lower last: (RetTerminator ty: I64Ty new val: val lower)
+]
+
 { #category : #accessing }
 HaltAnfExp >> val: anAnfValue [
 

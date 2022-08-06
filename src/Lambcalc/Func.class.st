@@ -47,6 +47,32 @@ Func >> joins [
 	^ joins
 ]
 
+{ #category : #'llvm lowering' }
+Func >> lower [
+
+	| spills entryBlock insns labeledBlocks |
+	spills := Dictionary new.
+	joins do: [ :j | 
+		j valueBinding ifNotNil: [ 
+			spills at: j binding put: j valueBinding , Temp fresh printString ] ].
+
+	insns := OrderedCollection withAll:
+		         (spills values collect: [ :spill | 
+			          { 
+				          spill.
+				          (AllocaInsn ty: I64Ty new) } ]).
+	entryBlock := (entry lowerWith: spills) at: 2.
+	entryBlock insns do: [ :i | insns add: i ].
+	entryBlock insns: insns.
+	labeledBlocks := joins collect: [ :join | join lowerWith: spills ].
+	^ { 
+		  binding.
+		  (Fdecl
+			   fty: Lower fty
+			   params: params
+			   cfg: (Cfg entry: entryBlock labeledBlocks: labeledBlocks)) }
+]
+
 { #category : #accessing }
 Func >> params [
 

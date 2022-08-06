@@ -13,6 +13,12 @@ GlobAnfValue class >> var: aString [
 	^ self new var: aString
 ]
 
+{ #category : #'llvm lowering' }
+GlobAnfValue >> lower [
+
+	^ GidOperand var: var
+]
+
 { #category : #accessing }
 GlobAnfValue >> var: aString [
 
