@@ -20,3 +20,18 @@ Cfg >> entry: aBlock labeledBlocks: aCollection [
 	entry := aBlock.
 	labeledBlocks := aCollection
 ]
+
+{ #category : #printing }
+Cfg >> printOn: aStream [
+
+	entry printOn: aStream.
+	aStream cr.
+	labeledBlocks
+		do: [ :tuple | 
+			aStream
+				nextPutAll: (tuple at: 1);
+				nextPutAll: ':';
+				cr.
+			(tuple at: 2) printOn: aStream ]
+		separatedBy: [ aStream cr ]
+]

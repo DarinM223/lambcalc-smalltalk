@@ -20,3 +20,14 @@ LoadInsn >> initializeWithTy: aPtrTy ptr: anOperand [
 	ty := aPtrTy.
 	ptr := anOperand
 ]
+
+{ #category : #printing }
+LoadInsn >> printOn: aStream [
+
+	aStream nextPutAll: 'load '.
+	ty ty printOn: aStream.
+	aStream nextPutAll: ', '.
+	ty printOn: aStream.
+	aStream nextPutAll: ' '.
+	ptr printOn: aStream
+]

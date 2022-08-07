@@ -15,6 +15,18 @@ CbrTerminator class >> val: anOperand then: aString else: aString2 [
 	^ self new val: anOperand then: aString else: aString2
 ]
 
+{ #category : #printing }
+CbrTerminator >> printOn: aStream [
+
+	aStream nextPutAll: 'br i1 '.
+	val printOn: aStream.
+	aStream
+		nextPutAll: ', label %';
+		nextPutAll: then;
+		nextPutAll: ', label %';
+		nextPutAll: else
+]
+
 { #category : #'as yet unclassified' }
 CbrTerminator >> val: anOperand then: aString else: aString2 [
 

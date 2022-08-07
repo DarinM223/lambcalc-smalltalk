@@ -28,3 +28,16 @@ BinopInsn >> op: anOp ty: aTy left: anOperand right: anOperand2 [
 	left := anOperand.
 	right := anOperand2
 ]
+
+{ #category : #printing }
+BinopInsn >> printOn: aStream [
+
+	aStream
+		nextPutAll: op opString;
+		nextPutAll: ' '.
+	ty printOn: aStream.
+	aStream nextPutAll: ' '.
+	left printOn: aStream.
+	aStream nextPutAll: ', '.
+	right printOn: aStream
+]

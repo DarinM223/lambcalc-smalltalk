@@ -75,7 +75,7 @@ AppAnfExp >> lowerWith: lower [
 				(IntToPtrInsn
 					 ty1: I64Ty new
 					 val: (IdOperand var: funName)
-					 ty2: (PtrTy ty: Lower fty)) };
+					 ty2: (PtrTy ty: (FunTy ty: Lower fty))) };
 		add: { 
 				binding.
 				(CallInsn

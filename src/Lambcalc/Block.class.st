@@ -30,3 +30,17 @@ Block >> insns: aCollection terminator: aTerminator [
 	insns := aCollection.
 	terminator := aTerminator
 ]
+
+{ #category : #printing }
+Block >> printOn: aStream [
+
+	insns
+		do: [ :i | 
+			aStream nextPutAll: '  '.
+			(i at: 2) printWithUid: (i at: 1) on: aStream ]
+		separatedBy: [ aStream cr ].
+	aStream
+		cr;
+		nextPutAll: '  '.
+	terminator printOn: aStream
+]

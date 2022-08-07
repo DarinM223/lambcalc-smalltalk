@@ -22,3 +22,14 @@ IntToPtrInsn >> initializeWithTy1: aTy val: anOperand ty2: aTy2 [
 	val := anOperand.
 	ty2 := aTy2
 ]
+
+{ #category : #printing }
+IntToPtrInsn >> printOn: aStream [
+
+	aStream nextPutAll: 'inttoptr '.
+	ty1 printOn: aStream.
+	aStream nextPutAll: ' '.
+	val printOn: aStream.
+	aStream nextPutAll: ' to '.
+	ty2 printOn: aStream
+]

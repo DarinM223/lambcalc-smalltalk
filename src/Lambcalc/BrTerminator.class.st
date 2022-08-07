@@ -17,3 +17,11 @@ BrTerminator class >> label: aString [
 BrTerminator >> label: aString [ 
 	label := aString
 ]
+
+{ #category : #printing }
+BrTerminator >> printOn: aStream [
+
+	aStream
+		nextPutAll: 'br label %';
+		nextPutAll: label
+]

@@ -57,7 +57,7 @@ TupleAnfExp >> lowerWith: lower [
 					 ty: (PtrTy ty: I64Ty new)
 					 ptr: (IdOperand var: ptr)
 					 indexes: { (ConstOperand val: i - 1) }) }.
-		(op isKindOf: GidOperand)
+		op class == GidOperand
 			ifTrue: [ 
 				| casted |
 				casted := 'casted' , Temp fresh printString.
@@ -75,14 +75,11 @@ TupleAnfExp >> lowerWith: lower [
 								 src: (IdOperand var: casted)
 								 dest: (IdOperand var: off)) } ]
 			ifFalse: [ 
-				(op isKindOf: IdOperand)
+				op class == IdOperand
 					ifTrue: [ 
 						lower instrs add: { 
 								''.
-								(StoreInsn
-									 ty: I64Ty new
-									 src: (IdOperand var: op)
-									 dest: (IdOperand var: off)) } ]
+								(StoreInsn ty: I64Ty new src: op dest: (IdOperand var: off)) } ]
 					ifFalse: [ self error: 'Constants or null cannot reach here' ] ] ].
 
 	rest lowerWith: lower

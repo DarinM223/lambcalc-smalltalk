@@ -22,3 +22,18 @@ GepInsn >> initializeWithTy: aTy ptr: anOperand indexes: aCollection [
 	ptr := anOperand.
 	indexes := aCollection
 ]
+
+{ #category : #printing }
+GepInsn >> printOn: aStream [
+
+	aStream nextPutAll: 'getelementptr '.
+	ty ty printOn: aStream.
+	aStream nextPutAll: ', '.
+	ty printOn: aStream.
+	aStream nextPutAll: ' '.
+	ptr printOn: aStream.
+	aStream nextPutAll: ', '.
+	indexes
+		do: [ :i | i printGepIndexOn: aStream ]
+		separatedBy: [ aStream nextPutAll: ', ' ]
+]

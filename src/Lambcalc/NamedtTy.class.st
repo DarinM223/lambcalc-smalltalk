@@ -6,3 +6,11 @@ Class {
 	],
 	#category : #'Lambcalc-Llvm'
 }
+
+{ #category : #printing }
+NamedtTy >> printOn: aStream [
+
+	aStream
+		nextPutAll: '%';
+		nextPutAll: tid
+]

@@ -13,6 +13,13 @@ AllocaInsn class >> ty: aTy [
 	^ self new ty: aTy
 ]
 
+{ #category : #printing }
+AllocaInsn >> printOn: aStream [
+
+	aStream nextPutAll: 'alloca '.
+	ty printOn: aStream
+]
+
 { #category : #accessing }
 AllocaInsn >> ty: aTy [
 

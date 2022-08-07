@@ -28,3 +28,17 @@ IcmpInsn >> cnd: aString ty: aTy left: anOperand right: anOperand2 [
 	left := anOperand.
 	right := anOperand2
 ]
+
+{ #category : #printing }
+IcmpInsn >> printOn: aStream [
+
+	aStream
+		nextPutAll: 'icmp ';
+		nextPutAll: cnd;
+		nextPutAll: ' '.
+	ty printOn: aStream.
+	aStream nextPutAll: ' '.
+	left printOn: aStream.
+	aStream nextPutAll: ', '.
+	right printOn: aStream
+]
