@@ -12,125 +12,71 @@ LambcalcParserTest >> testFactorial5 [
 	expected := LambcalcAppLamNode new
 		            lam: (LambcalcAppLamNode new
 				             lam: (LambcalcLamLamNode new
-						              var: (LambcalcVarLamNode new
-								               var: 'g';
-								               yourself);
+						              var: (LambcalcVarLamNode new var: 'g');
 						              body: (LambcalcAppLamNode new
 								               lam: (LambcalcLamLamNode new
-										                var: (LambcalcVarLamNode new
-												                 var: 'x';
-												                 yourself);
+										                var: (LambcalcVarLamNode new var: 'x');
 										                body: (LambcalcAppLamNode new
-												                 lam: (LambcalcVarLamNode new
-														                  var: 'g';
-														                  yourself);
+												                 lam: (LambcalcVarLamNode new var: 'g');
 												                 val: (LambcalcLamLamNode new
-														                  var: (LambcalcVarLamNode new
-																                   var: 'v';
-																                   yourself);
+														                  var: (LambcalcVarLamNode new var: 'v');
 														                  body: (LambcalcAppLamNode new
 																                   lam: (LambcalcAppLamNode new
-																		                    lam: (LambcalcVarLamNode new
-																				                     var: 'x';
-																				                     yourself);
-																		                    val: (LambcalcVarLamNode new
-																				                     var: 'x';
-																				                     yourself);
-																		                    yourself);
-																                   val: (LambcalcVarLamNode new
-																		                    var: 'v';
-																		                    yourself);
-																                   yourself);
-														                  yourself);
-												                 yourself);
-										                yourself);
+																		                    lam:
+																			                    (LambcalcVarLamNode new var:
+																					                     'x');
+																		                    val:
+																			                    (LambcalcVarLamNode new var:
+																					                     'x'));
+																                   val:
+																                   (LambcalcVarLamNode new var: 'v')))));
 								               val: (LambcalcLamLamNode new
-										                var: (LambcalcVarLamNode new
-												                 var: 'x';
-												                 yourself);
+										                var: (LambcalcVarLamNode new var: 'x');
 										                body: (LambcalcAppLamNode new
-												                 lam: (LambcalcVarLamNode new
-														                  var: 'g';
-														                  yourself);
+												                 lam: (LambcalcVarLamNode new var: 'g');
 												                 val: (LambcalcLamLamNode new
-														                  var: (LambcalcVarLamNode new
-																                   var: 'v';
-																                   yourself);
+														                  var: (LambcalcVarLamNode new var: 'v');
 														                  body: (LambcalcAppLamNode new
 																                   lam: (LambcalcAppLamNode new
-																		                    lam: (LambcalcVarLamNode new
-																				                     var: 'x';
-																				                     yourself);
-																		                    val: (LambcalcVarLamNode new
-																				                     var: 'x';
-																				                     yourself);
-																		                    yourself);
-																                   val: (LambcalcVarLamNode new
-																		                    var: 'v';
-																		                    yourself);
-																                   yourself);
-														                  yourself);
-												                 yourself);
-										                yourself);
-								               yourself);
-						              yourself);
+																		                    lam:
+																			                    (LambcalcVarLamNode new var:
+																					                     'x');
+																		                    val:
+																			                    (LambcalcVarLamNode new var:
+																					                     'x'));
+																                   val:
+																                   (LambcalcVarLamNode new var: 'v')))))));
 				             val: (LambcalcLamLamNode new
-						              var: (LambcalcVarLamNode new
-								               var: 'f';
-								               yourself);
+						              var: (LambcalcVarLamNode new var: 'f');
 						              body: (LambcalcLamLamNode new
-								               var: (LambcalcVarLamNode new
-										                var: 'x';
-										                yourself);
+								               var: (LambcalcVarLamNode new var: 'x');
 								               body: (LambcalcIfLamNode new
-										                test: (LambcalcVarLamNode new
-												                 var: 'x';
-												                 yourself);
+										                test: (LambcalcVarLamNode new var: 'x');
 										                trueBranch: (LambcalcIfLamNode new
 												                 test: (LambcalcBopLamNode new
 														                  op: LambcalcMinusOp;
-														                  left: (LambcalcVarLamNode new
-																                   var: 'x';
-																                   yourself);
-														                  right: (LambcalcIntLamNode new
-																                   val: 1;
-																                   yourself);
-														                  yourself);
+														                  left:
+															                  (LambcalcVarLamNode new var: 'x');
+														                  right: (LambcalcIntLamNode new val: 1));
 												                 trueBranch: (LambcalcBopLamNode new
 														                  op: LambcalcMultOp;
-														                  left: (LambcalcVarLamNode new
-																                   var: 'x';
-																                   yourself);
+														                  left:
+															                  (LambcalcVarLamNode new var: 'x');
 														                  right: (LambcalcAppLamNode new
-																                   lam: (LambcalcVarLamNode new
-																		                    var: 'f';
-																		                    yourself);
+																                   lam:
+																	                   (LambcalcVarLamNode new var: 'f');
 																                   val: (LambcalcBopLamNode new
 																		                    op: LambcalcMinusOp;
-																		                    left: (LambcalcVarLamNode new
-																				                     var: 'x';
-																				                     yourself);
-																		                    right: (LambcalcIntLamNode new
-																				                     val: 1;
-																				                     yourself);
-																		                    yourself);
-																                   yourself);
-														                  yourself);
-												                 falseBranch: (LambcalcIntLamNode new
-														                  val: 1;
-														                  yourself);
+																		                    left:
+																			                    (LambcalcVarLamNode new var:
+																					                     'x');
+																		                    right:
+																			                    (LambcalcIntLamNode new val: 1))));
+												                 falseBranch:
+												                 (LambcalcIntLamNode new val: 1);
 												                 yourself);
-										                falseBranch: (LambcalcIntLamNode new
-												                 val: 1;
-												                 yourself);
-										                yourself);
-								               yourself);
-						              yourself);
-				             yourself);
-		            val: (LambcalcIntLamNode new
-				             val: 5;
-				             yourself);
-		            yourself.
+										                falseBranch: (LambcalcIntLamNode new val: 1)))));
+		            val: (LambcalcIntLamNode new val: 5).
 	self
 		assert: (parser parse:
 				 '(fn g => (fn x => g (fn v => x x v)) (fn x => g (fn v => x x v))) (fn f => fn x => if x then (if x - 1 then x * f (x - 1) else 1) else 1) 5')
