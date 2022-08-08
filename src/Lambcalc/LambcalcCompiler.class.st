@@ -8,19 +8,19 @@ Class {
 LambcalcCompiler class >> compile: aString on: aStream [
 
 	| parser node fns fdecls prog |
-	Temp reset.
-	parser := Parser new.
+	LambcalcTemp reset.
+	parser := LambcalcParser new.
 	node := parser parse: aString.
 	node alphaRename.
 	fns := node anfConvert closureConvert hoist.
 	fdecls := fns collect: [ :fn | fn lower ].
-	prog := Prog new
+	prog := LambcalcProg new
 		        fdecls: fdecls;
 		        edecls: { { 
 				        'malloc'.
-				        (FunTy ty: { 
-							         { I64Ty new }.
-							         (PtrTy ty: I64Ty new) }) } }.
+				        (LambcalcFunTy ty: { 
+							         { LambcalcI64Ty new }.
+							         (LambcalcPtrTy ty: LambcalcI64Ty new) }) } }.
 	prog printOn: aStream
 ]
 
