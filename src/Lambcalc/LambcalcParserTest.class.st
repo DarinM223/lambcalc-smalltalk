@@ -91,30 +91,16 @@ LambcalcParserTest >> testParserArithmetic [
 	parser := LambcalcParser new.
 	expected := LambcalcBopLamNode new
 		            op: LambcalcPlusOp;
-		            left: (LambcalcIntLamNode new
-				             val: 1;
-				             yourself);
+		            left: (LambcalcIntLamNode new val: 1);
 		            right: (LambcalcAppLamNode new
 				             lam: (LambcalcBopLamNode new
 						              op: LambcalcPlusOp;
-						              left: (LambcalcIntLamNode new
-								               val: 1;
-								               yourself);
-						              right: (LambcalcIntLamNode new
-								               val: 2;
-								               yourself);
-						              yourself);
+						              left: (LambcalcIntLamNode new val: 1);
+						              right: (LambcalcIntLamNode new val: 2));
 				             val: (LambcalcBopLamNode new
 						              op: LambcalcMultOp;
-						              left: (LambcalcIntLamNode new
-								               val: 3;
-								               yourself);
-						              right: (LambcalcIntLamNode new
-								               val: 5;
-								               yourself);
-						              yourself);
-				             yourself);
-		            yourself.
+						              left: (LambcalcIntLamNode new val: 3);
+						              right: (LambcalcIntLamNode new val: 5))).
 	self
 		assert: (parser parse: '1 + (1 + 2) (3 * 5)') printString
 		equals: expected printString
@@ -126,16 +112,9 @@ LambcalcParserTest >> testParserIf [
 	| parser expected |
 	parser := LambcalcParser new.
 	expected := LambcalcIfLamNode new
-		            test: (LambcalcIntLamNode new
-				             val: 1;
-				             yourself);
-		            trueBranch: (LambcalcIntLamNode new
-				             val: 2;
-				             yourself);
-		            falseBranch: (LambcalcIntLamNode new
-				             val: 3;
-				             yourself);
-		            yourself.
+		            test: (LambcalcIntLamNode new val: 1);
+		            trueBranch: (LambcalcIntLamNode new val: 2);
+		            falseBranch: (LambcalcIntLamNode new val: 3).
 	self
 		assert: (parser parse: 'if 1 then 2 else 3') printString
 		equals: expected printString
@@ -148,23 +127,12 @@ LambcalcParserTest >> testParserLam [
 	parser := LambcalcParser new.
 	expected := LambcalcAppLamNode new
 		            lam: (LambcalcLamLamNode new
-				             var: (LambcalcVarLamNode new
-						              var: 'a';
-						              yourself);
+				             var: (LambcalcVarLamNode new var: 'a');
 				             body: (LambcalcBopLamNode new
 						              op: LambcalcPlusOp;
-						              left: (LambcalcVarLamNode new
-								               var: 'a';
-								               yourself);
-						              right: (LambcalcIntLamNode new
-								               val: 1;
-								               yourself);
-						              yourself);
-				             yourself);
-		            val: (LambcalcIntLamNode new
-				             val: 1;
-				             yourself);
-		            yourself.
+						              left: (LambcalcVarLamNode new var: 'a');
+						              right: (LambcalcIntLamNode new val: 1)));
+		            val: (LambcalcIntLamNode new val: 1).
 	self
 		assert: (parser parse: '(fn a => a + 1) 1') printString
 		equals: expected printString
