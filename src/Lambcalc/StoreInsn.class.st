@@ -12,7 +12,15 @@ Class {
 { #category : #'as yet unclassified' }
 StoreInsn class >> ty: aTy src: anOperand1 dest: anOperand2 [
 
-	^ self new ty: aTy src: anOperand1 dest: anOperand2
+	^ self new initializeTy: aTy src: anOperand1 dest: anOperand2
+]
+
+{ #category : #'as yet unclassified' }
+StoreInsn >> initializeTy: aTy src: anOperand1 dest: anOperand2 [
+
+	ty := aTy.
+	src := anOperand1.
+	dest := anOperand2
 ]
 
 { #category : #printing }
@@ -32,12 +40,4 @@ StoreInsn >> printOn: aStream [
 StoreInsn >> printWithUid: aString on: aStream [
 
 	self printOn: aStream
-]
-
-{ #category : #'as yet unclassified' }
-StoreInsn >> ty: aTy src: anOperand1 dest: anOperand2 [
-
-	ty := aTy.
-	src := anOperand1.
-	dest := anOperand2
 ]

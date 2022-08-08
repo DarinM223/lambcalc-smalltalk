@@ -12,7 +12,15 @@ Class {
 { #category : #'as yet unclassified' }
 CallInsn class >> ty: aTy fun: anOperand args: aCollection [
 
-	^ self new ty: aTy fun: anOperand args: aCollection
+	^ self new initializeTy: aTy fun: anOperand args: aCollection
+]
+
+{ #category : #'as yet unclassified' }
+CallInsn >> initializeTy: aTy fun: anOperand args: aCollection [
+
+	ty := aTy.
+	fun := anOperand.
+	args := aCollection
 ]
 
 { #category : #printing }
@@ -38,12 +46,4 @@ CallInsn >> printWithUid: aString on: aStream [
 	ty class == VoidTy
 		ifTrue: [ self printOn: aStream ]
 		ifFalse: [ super printWithUid: aString on: aStream ]
-]
-
-{ #category : #'as yet unclassified' }
-CallInsn >> ty: aTy fun: anOperand args: aCollection [
-
-	ty := aTy.
-	fun := anOperand.
-	args := aCollection
 ]

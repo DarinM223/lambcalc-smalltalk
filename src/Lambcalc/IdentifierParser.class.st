@@ -31,7 +31,5 @@ IdentifierParser >> parseOn: ctxt [
 	identifier isPetitFailure ifTrue: [ 
 		ctxt restore: momento.
 		^ identifier ].
-	^ VarLamNode new
-		  var: identifier;
-		  yourself
+	^ VarLamNode new var: identifier
 ]

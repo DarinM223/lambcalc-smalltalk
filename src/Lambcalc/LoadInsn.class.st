@@ -11,11 +11,11 @@ Class {
 { #category : #'as yet unclassified' }
 LoadInsn class >> ty: aPtrTy ptr: anOperand [
 
-	^ self new initializeWithTy: aPtrTy ptr: anOperand
+	^ self new initializeTy: aPtrTy ptr: anOperand
 ]
 
 { #category : #initialization }
-LoadInsn >> initializeWithTy: aPtrTy ptr: anOperand [
+LoadInsn >> initializeTy: aPtrTy ptr: anOperand [
 
 	ty := aPtrTy.
 	ptr := anOperand

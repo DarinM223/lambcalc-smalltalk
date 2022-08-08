@@ -12,11 +12,11 @@ Class {
 { #category : #'as yet unclassified' }
 Fdecl class >> fty: aCollection params: aCollection2 cfg: aCfg [
 
-	^ self new fty: aCollection params: aCollection2 cfg: aCfg
+	^ self new initializeFty: aCollection params: aCollection2 cfg: aCfg
 ]
 
 { #category : #'as yet unclassified' }
-Fdecl >> fty: aCollection params: aCollection2 cfg: aCfg [
+Fdecl >> initializeFty: aCollection params: aCollection2 cfg: aCfg [
 
 	fty := aCollection.
 	params := aCollection2.

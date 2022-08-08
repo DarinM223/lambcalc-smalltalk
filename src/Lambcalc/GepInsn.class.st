@@ -12,11 +12,11 @@ Class {
 { #category : #'as yet unclassified' }
 GepInsn class >> ty: aTy ptr: anOperand indexes: aCollection [
 
-	^ self new initializeWithTy: aTy ptr: anOperand indexes: aCollection
+	^ self new initializeTy: aTy ptr: anOperand indexes: aCollection
 ]
 
 { #category : #initialization }
-GepInsn >> initializeWithTy: aTy ptr: anOperand indexes: aCollection [
+GepInsn >> initializeTy: aTy ptr: anOperand indexes: aCollection [
 
 	ty := aTy.
 	ptr := anOperand.

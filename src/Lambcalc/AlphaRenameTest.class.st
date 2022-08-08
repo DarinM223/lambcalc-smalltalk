@@ -29,33 +29,16 @@ AlphaRenameTest >> testRenamesVarsInLambda [
 	parser := Parser new.
 	node := parser parse: '(fn a => (fn a => (fn a => a) a) a)'.
 	expected := LamLamNode new
-		            var: (VarLamNode new
-				             var: 'a0';
-				             yourself);
+		            var: (VarLamNode new var: 'a0');
 		            body: (AppLamNode new
 				             lam: (LamLamNode new
-						              var: (VarLamNode new
-								               var: 'a1';
-								               yourself);
+						              var: (VarLamNode new var: 'a1');
 						              body: (AppLamNode new
 								               lam: (LamLamNode new
-										                var: (VarLamNode new
-												                 var: 'a2';
-												                 yourself);
-										                body: (VarLamNode new
-												                 var: 'a2';
-												                 yourself);
-										                yourself);
-								               val: (VarLamNode new
-										                var: 'a1';
-										                yourself);
-								               yourself);
-						              yourself);
-				             val: (VarLamNode new
-						              var: 'a0';
-						              yourself);
-				             yourself);
-		            yourself.
+										                var: (VarLamNode new var: 'a2');
+										                body: (VarLamNode new var: 'a2'));
+								               val: (VarLamNode new var: 'a1')));
+				             val: (VarLamNode new var: 'a0')).
 	self
 		assert: (node
 				 alphaRename;

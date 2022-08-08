@@ -11,11 +11,11 @@ Class {
 { #category : #'as yet unclassified' }
 Cfg class >> entry: aBlock labeledBlocks: aCollection [
 
-	^ self new entry: aBlock labeledBlocks: aCollection
+	^ self new initializeEntry: aBlock labeledBlocks: aCollection
 ]
 
 { #category : #'as yet unclassified' }
-Cfg >> entry: aBlock labeledBlocks: aCollection [
+Cfg >> initializeEntry: aBlock labeledBlocks: aCollection [
 
 	entry := aBlock.
 	labeledBlocks := aCollection

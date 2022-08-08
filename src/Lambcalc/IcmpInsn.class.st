@@ -14,14 +14,14 @@ Class {
 IcmpInsn class >> cnd: aString ty: aTy left: anOperand right: anOperand2 [
 
 	^ self new
-		  cnd: aString
+		  initializeCnd: aString
 		  ty: aTy
 		  left: anOperand
 		  right: anOperand2
 ]
 
 { #category : #'as yet unclassified' }
-IcmpInsn >> cnd: aString ty: aTy left: anOperand right: anOperand2 [
+IcmpInsn >> initializeCnd: aString ty: aTy left: anOperand right: anOperand2 [
 
 	cnd := aString.
 	ty := aTy.

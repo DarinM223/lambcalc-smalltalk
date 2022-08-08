@@ -11,7 +11,14 @@ Class {
 { #category : #'as yet unclassified' }
 Block class >> insns: aCollection terminator: aTerminator [
 
-	^ self new insns: aCollection terminator: aTerminator
+	^ self new initializeInsns: aCollection terminator: aTerminator
+]
+
+{ #category : #'as yet unclassified' }
+Block >> initializeInsns: aCollection terminator: aTerminator [
+
+	insns := aCollection.
+	terminator := aTerminator
 ]
 
 { #category : #accessing }
@@ -22,13 +29,6 @@ Block >> insns [
 { #category : #accessing }
 Block >> insns: aCollection [ 
 	insns := aCollection
-]
-
-{ #category : #'as yet unclassified' }
-Block >> insns: aCollection terminator: aTerminator [
-
-	insns := aCollection.
-	terminator := aTerminator
 ]
 
 { #category : #printing }

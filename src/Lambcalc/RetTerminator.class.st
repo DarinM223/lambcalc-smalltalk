@@ -11,7 +11,14 @@ Class {
 { #category : #'as yet unclassified' }
 RetTerminator class >> ty: aTy val: anOperand [
 
-	^ self new ty: aTy val: anOperand
+	^ self new initializeTy: aTy val: anOperand
+]
+
+{ #category : #'as yet unclassified' }
+RetTerminator >> initializeTy: aTy val: anOperand [
+
+	ty := aTy.
+	val := anOperand
 ]
 
 { #category : #printing }
@@ -22,11 +29,4 @@ RetTerminator >> printOn: aStream [
 		ty printOn: aStream.
 		aStream nextPutAll: ' '.
 		val printOn: aStream ]
-]
-
-{ #category : #'as yet unclassified' }
-RetTerminator >> ty: aTy val: anOperand [
-
-	ty := aTy.
-	val := anOperand
 ]
