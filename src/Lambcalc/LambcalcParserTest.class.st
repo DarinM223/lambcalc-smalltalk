@@ -73,8 +73,7 @@ LambcalcParserTest >> testFactorial5 [
 																		                    right:
 																			                    (LambcalcIntLamNode new val: 1))));
 												                 falseBranch:
-												                 (LambcalcIntLamNode new val: 1);
-												                 yourself);
+												                 (LambcalcIntLamNode new val: 1));
 										                falseBranch: (LambcalcIntLamNode new val: 1)))));
 		            val: (LambcalcIntLamNode new val: 5).
 	self

@@ -37,9 +37,8 @@ LambcalcParser >> initialize [
 		            var: (nodes at: 2);
 		            body: (nodes at: 4) ].
 	integer := #digit asParser plus trim ==> [ :token | 
-	           LambcalcIntLamNode new
-		           val: (Integer readFrom: token readStream);
-		           yourself ].
+	           LambcalcIntLamNode new val:
+		           (Integer readFrom: token readStream) ].
 
 	expression term: parens / parseIf / parseLam / identifier / integer.
 	expression
